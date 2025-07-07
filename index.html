@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Payment Form Example</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container py-5">
+    <form>
+      <!-- Fieldset visual -->
+      <fieldset class="p-4 border rounded-3">
+
+        <!-- Título -->
+        <legend class="bg-light p-3 border-bottom rounded-top fs-4 mb-3"><strong>Payment form example</strong></legend>
+
+        <!-- Mensaje de error -->
+        <div class="alert alert-warning mb-4">Some fields are missing</div>
+
+        <!-- Card #, CVC #, Amount -->
+    <div class="row mb-3">
+    <!-- Card # -->
+    <div class="col-md-6 mb-3">
+        <label for="card" class="form-label">Card #</label>
+        <input type="text" class="form-control" id="card" name="card" 
+            placeholder="XXXXXXXXXXXXXXXX" required maxlength="16"
+            pattern="\d{16}" inputmode="numeric"
+            oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+    </div>
+
+    <!-- CVC # -->
+    <div class="col-md-3 mb-3">
+        <label for="cvc" class="form-label">CVC #</label>
+        <input type="text" class="form-control" id="cvc" name="cvc" 
+            placeholder="000" required maxlength="3"
+            pattern="\d{3}" inputmode="numeric"
+            oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+    </div>
+
+    <!-- Amount -->
+    <div class="col-md-3 mb-3">
+        <label for="amount" class="form-label">Amount</label>
+        <div class="input-group">
+        <span class="input-group-text">$</span>
+        <input type="text" class="form-control" id="amount" name="amount" 
+                placeholder="Amount" required inputmode="decimal"
+                oninput="this.value = this.value.replace(/[^0-9.]/g, '')">
+        </div>
+    </div>
+    </div>
+
+        <!-- Nombre y Apellido -->
+        <div class="row mb-3">
+          <div class="col-md-6 mb-3">
+            <label for="name" class="form-label">First Name</label>
+            <input type="text" class="form-control" id="name" name="name" required
+                pattern="[A-Za-z\s]+" maxlength="30"
+                oninput="this.value = this.value.replace(/[^A-Za-z\s]/g, '')"
+                title="Only letters and spaces allowed">
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="surname" class="form-label">Last Name</label>
+            <input type="text" class="form-control" id="surname" name="surname" required
+                pattern="[A-Za-z\s]+" maxlength="30"
+                oninput="this.value = this.value.replace(/[^A-Za-z\s]/g, '')"
+                title="Only letters and spaces allowed">
+          </div>
+        </div>
+
+        <!-- Ciudad, Estado, Código Postal -->
+        <div class="row mb-4">
+          <div class="col-md-5 mb-3">
+            <label for="city" class="form-label">City</label>
+            <input type="text" class="form-control" id="city" name="city" required>
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="state" class="form-label">State</label>
+            <select id="state" class="form-select" required>
+              <option selected disabled>Pick a state</option>
+              <option>CDMX</option>
+              <option>Morelos</option>
+              <option>Nuevo León</option>
+            </select>
+          </div>
+          <div class="col-md-3 mb-3">
+            <label for="postal" class="form-label">Postal Code</label>
+            <input type="text" class="form-control" id="postal" name="postal" required>
+          </div>
+        </div>
+
+        <!-- Tarjetas aceptadas y mensaje -->
+        <div class="row mb-4">
+          <div class="col-md-6">
+            <label class="form-label d-block mb-2">We accept:</label>
+            <div class="btn-group bg-light p-2 rounded-2" role="group">
+              <input type="radio" class="btn-check" name="cardtype" id="mastercard" autocomplete="off" checked>
+              <label class="btn btn-outline-secondary" for="mastercard">
+                <img src="https://img.icons8.com/color/48/000000/mastercard-logo.png" alt="MasterCard" width="30">
+              </label>
+
+              <input type="radio" class="btn-check" name="cardtype" id="visa" autocomplete="off">
+              <label class="btn btn-outline-secondary" for="visa">
+                <img src="https://img.icons8.com/color/48/000000/visa.png" alt="Visa" width="30">
+              </label>
+
+              <input type="radio" class="btn-check" name="cardtype" id="diners" autocomplete="off">
+              <label class="btn btn-outline-secondary" for="diners">
+                <img src="https://img.icons8.com/ios-filled/50/000000/diners-club.png" alt="Diners" width="30">
+              </label>
+
+              <input type="radio" class="btn-check" name="cardtype" id="amex" autocomplete="off">
+              <label class="btn btn-outline-secondary" for="amex">
+                <img src="https://img.icons8.com/color/48/000000/amex.png" alt="American Express" width="30">
+              </label>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label for="message" class="form-label">Message</label>
+            <textarea id="message" name="message" rows="4" class="form-control" placeholder="Add any notes here."></textarea>
+          </div>
+        </div>
+
+        <!-- Botones -->
+        <div class="bg-light p-3 border-top rounded-bottom d-flex justify-content-end gap-2">
+          <button type="button" class="btn btn-secondary">Cancel</button>
+          <button type="submit" class="btn btn-primary">Send</button>
+        </div>
+
+      </fieldset>
+    </form>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
